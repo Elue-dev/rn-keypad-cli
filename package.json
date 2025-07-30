@@ -1,12 +1,13 @@
 {
   "name": "rn-keypad-cli",
-  "version": "0.1.8",
+  "version": "0.1.1",
   "description": "CLI to add the Keypad component to your React Native project",
   "author": "Wisdom Elue",
   "license": "MIT",
   "scripts": {
     "build": "bun build src/index.ts --outfile bin/index.js --target bun",
-    "prepare": "bun run build"
+    "prepare": "bun run build",
+    "publish": "npm publish"
   },
   "keywords": [
     "react-native",
@@ -31,11 +32,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Elue-dev/rn-keypad-component-cli.git"
+    "url": "https://github.com/Elue-dev/rn-keypad-cli.git"
   },
-  "homepage": "https://github.com/Elue-dev/rn-keypad-component-cli#readme",
+  "homepage": "https://github.com/Elue-dev/rn-keypad-cli#readme",
   "bugs": {
-    "url": "https://github.com/Elue-dev/rn-keypad-component-cli/issues"
+    "url": "https://github.com/Elue-dev/rn-keypad-cli/issues"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
