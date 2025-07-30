@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node
 // @bun
 var __create = Object.create;
 var __getProtoOf = Object.getPrototypeOf;
@@ -1660,7 +1660,8 @@ var require_cli_spinners = __commonJS((exports, module) => {
 
 // src/index.ts
 import { mkdirSync, existsSync, readdirSync, copyFileSync } from "fs";
-import { join } from "path";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 import { createInterface } from "readline";
 
 // node_modules/chalk/source/vendor/ansi-styles/index.js
@@ -2964,6 +2965,8 @@ function ora(options) {
 // src/index.ts
 var log = console.log;
 var spinner = ora();
+var __filename2 = fileURLToPath(import.meta.url);
+var __dirname2 = dirname(__filename2);
 function copySourceCodeRecursively(src, dest) {
   if (!existsSync(dest)) {
     mkdirSync(dest, { recursive: true });
@@ -2991,6 +2994,20 @@ function askQuestion(query) {
     });
   });
 }
+function findTemplateDirectory() {
+  const possiblePaths = [
+    join(__dirname2, "..", "template", "Keypad"),
+    join(__dirname2, "template", "Keypad"),
+    join(dirname(__dirname2), "template", "Keypad"),
+    join(__dirname2, "..", "..", "template", "Keypad")
+  ];
+  for (const path of possiblePaths) {
+    if (existsSync(path)) {
+      return path;
+    }
+  }
+  return possiblePaths[0] || join(__dirname2, "..", "template", "Keypad");
+}
 async function runCLI() {
   log(source_default.bold.blueBright(`
 \uD83E\uDDEE React Native Keypad Component CLI
@@ -3001,11 +3018,26 @@ async function runCLI() {
   const relativePath = input || "components/Keypad";
   const projectRoot = process.cwd();
   const targetDir = join(projectRoot, relativePath);
-  const templateDir = join(import.meta.dir, "..", "template", "Keypad");
+  const templateDir = findTemplateDirectory();
   spinner.start(`Creating folder: ${relativePath}`);
   mkdirSync(targetDir, { recursive: true });
   spinner.succeed(source_default.green(`Created folder: ${relativePath}`));
   spinner.start("Copying Keypad component files...");
+  if (!existsSync(templateDir)) {
+    spinner.fail(source_default.red(`Template directory not found!`));
+    log(source_default.yellow(`
+Debugging information:`));
+    log(source_default.yellow(`- CLI script location: ${__dirname2}`));
+    log(source_default.yellow(`- Looking for template at: ${templateDir}`));
+    log(source_default.yellow(`- Current working directory: ${process.cwd()}`));
+    const parentDir = join(__dirname2, "..");
+    if (existsSync(parentDir)) {
+      const contents = readdirSync(parentDir);
+      log(source_default.yellow(`- Contents of ${parentDir}:`));
+      contents.forEach((item) => log(source_default.yellow(`  - ${item}`)));
+    }
+    process.exit(1);
+  }
   copySourceCodeRecursively(templateDir, targetDir);
   spinner.succeed(source_default.green("Keypad files copied successfully"));
   log(source_default.bold.green(`
