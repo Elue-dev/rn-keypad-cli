@@ -4,9 +4,9 @@ A simple CLI to quickly scaffold and add the [React Native Keypad Component](htt
 
 ---
 
-Watch demo video here: [Demo Video](https://res.cloudinary.com/dwdsjbetu/image/upload/v1753911738/ScreenRecording2025-07-30at21.07.05-ezgif.com-video-to-gif-converter_ny6wuw.gif)
+Watch demo video here: [Demo Video](https://res.cloudinary.com/dwdsjbetu/image/upload/v1753918424/ScreenRecording2025-07-31at00.22.15-ezgif.com-video-to-gif-converter_ibc32c.gif)
 
-![Keypad Demo](https://res.cloudinary.com/dwdsjbetu/image/upload/v1753911738/ScreenRecording2025-07-30at21.07.05-ezgif.com-video-to-gif-converter_ny6wuw.gif)
+![Keypad Demo](https://res.cloudinary.com/dwdsjbetu/image/upload/v1753918424/ScreenRecording2025-07-31at00.22.15-ezgif.com-video-to-gif-converter_ibc32c.gif)
 
 ## 📦 Installation
 
