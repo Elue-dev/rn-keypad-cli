@@ -10,7 +10,13 @@ Watch demo video here: [Demo Video](https://res.cloudinary.com/dwdsjbetu/image/u
 
 ## 📦 Installation
 
-You can run it with `npx`:
+You can run it with `bun`:
+
+```bash
+bunx rn-keypad-cli
+```
+
+Or run it with `npx`:
 
 ```bash
 npx rn-keypad-cli
@@ -27,7 +33,7 @@ npm install -g rn-keypad-cli
 Inside your React Native project directory, run:
 
 ```bash
-npx rn-keypad-cli
+bunx rn-keypad-cli
 ```
 
 You'll be prompted to choose your installation directory:
